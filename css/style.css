@@ -1,0 +1,324 @@
+/* ============================================================
+ROOT VARIABLES — premium dark-violet + gold token system
+============================================================ */
+:root{
+  --bg-deep:#160b2e;
+  --bg-mid:#2a1454;
+  --violet:#6d28d9;
+  --gold:#f5c451;
+  --gold-soft:#ffe9b8;
+  --rose:#ff5da2;
+  --card-w:340px;
+  --card-h:150px;
+  --radius-lg:28px;
+  --radius-md:18px;
+  --text-light:#f5f2ff;
+  --text-dim:#c9bce6;
+  --shadow-deep: 0 25px 60px -15px rgba(0,0,0,.6), 0 8px 20px -8px rgba(109,40,217,.45);
+}
+
+*{ box-sizing:border-box; margin:0; padding:0; }
+
+html,body{
+  height:100%;
+  font-family:'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow-x:hidden;
+}
+
+/* ============================================================
+BACKGROUND — gradient + floating blurred glass orbs
+============================================================ */
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,93,162,.25), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(245,196,81,.18), transparent 50%),
+    linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-mid) 55%, #1c0f3d 100%);
+  position:relative;
+  padding:20px;
+}
+
+.bg-orb{
+  position:fixed;
+  border-radius:50%;
+  filter:blur(60px);
+  opacity:.55;
+  pointer-events:none;
+  z-index:0;
+  animation:floatOrb 14s ease-in-out infinite;
+}
+.bg-orb.o1{ width:260px; height:260px; background:var(--rose); top:8%; left:6%; animation-delay:0s; }
+.bg-orb.o2{ width:320px; height:320px; background:var(--violet); bottom:5%; right:8%; animation-delay:3s; }
+.bg-orb.o3{ width:180px; height:180px; background:var(--gold); top:60%; left:12%; animation-delay:6s; }
+.bg-orb.o4{ width:220px; height:220px; background:#4fd1e8; top:12%; right:15%; animation-delay:9s; }
+
+@keyframes floatOrb{
+  0%,100%{ transform:translate(0,0) scale(1); }
+  50%{ transform:translate(30px,-40px) scale(1.12); }
+}
+
+/* ============================================================
+PAGE HEADER
+============================================================ */
+.stage{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:460px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+}
+
+.brand-eyebrow{
+  letter-spacing:.32em;
+  font-size:11px;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  font-weight:600;
+  opacity:.85;
+}
+
+.headline{
+  text-align:center;
+  font-size:30px;
+  font-weight:800;
+  color:var(--text-light);
+  line-height:1.2;
+  text-shadow:0 4px 24px rgba(109,40,217,.5);
+}
+.headline span{
+  background:linear-gradient(90deg,var(--gold) 0%, var(--rose) 55%, var(--gold) 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.subtext{
+  text-align:center;
+  color:var(--text-dim);
+  font-size:14px;
+  max-width:340px;
+}
+
+/* ============================================================
+GLASSMORPHIC PANEL WRAPPING THE CARD
+============================================================ */
+.panel{
+  position:relative;
+  padding:34px;
+  border-radius:32px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.14);
+  box-shadow:var(--shadow-deep);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:24px;
+}
+
+/* ============================================================
+SCRATCH CARD CONTAINER
+============================================================ */
+#cardWrap{
+  position:relative;
+  width:var(--card-w);
+  height:var(--card-h);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-deep);
+  overflow:hidden;
+  isolation:isolate;
+}
+
+/* Prize layer underneath the scratchable canvas */
+#prizeLayer{
+  position:absolute;
+  inset:0;
+  border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,#1c0f3d 0%, #341a66 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  overflow:hidden;
+}
+
+.prize-label{
+  font-size:11px;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  color:var(--text-dim);
+  font-weight:600;
+}
+
+#prizeCode{
+  font-size:clamp(28px, 8vw, 40px);
+  font-weight:900;
+  letter-spacing:2px;
+  background:linear-gradient(100deg, var(--gold) 0%, #fff3d1 25%, var(--rose) 55%, var(--gold) 85%);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-align:center;
+  animation:shineText 3.2s linear infinite;
+  filter:drop-shadow(0 0 12px rgba(245,196,81,.35));
+}
+
+@keyframes shineText{
+  0%{ background-position:0% center; }
+  100%{ background-position:220% center; }
+}
+
+.prize-sub{
+  font-size:12px;
+  color:var(--text-dim);
+  letter-spacing:.05em;
+}
+
+/* Glow ring applied to card once revealed */
+#cardWrap.revealed{
+  animation:pulseGlow 2.4s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+  0%,100%{
+    box-shadow:0 25px 60px -15px rgba(0,0,0,.6), 0 0 25px 4px rgba(245,196,81,.35), 0 0 55px 10px rgba(255,93,162,.18);
+    transform:scale(1);
+  }
+  50%{
+    box-shadow:0 25px 60px -15px rgba(0,0,0,.6), 0 0 40px 10px rgba(245,196,81,.55), 0 0 80px 18px rgba(255,93,162,.3);
+    transform:scale(1.015);
+  }
+}
+
+/* Scratch canvas sits above the prize layer */
+#scratchCanvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border-radius:var(--radius-lg);
+  cursor:pointer;
+  touch-action:none;
+}
+
+/* Dashed ticket-style border framing the scratchable area */
+.scratch-border{
+  position:absolute;
+  inset:8px;
+  border-radius:calc(var(--radius-lg) - 8px);
+  border:2.5px dashed rgba(255,255,255,.55);
+  pointer-events:none;
+  z-index:2;
+}
+
+/* Single hint badge — a readable pill with icon + label, shown once,
+fades out as soon as scratching begins and is fully hidden on reveal */
+.scratch-hint{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 18px;
+  border-radius:999px;
+  background:rgba(20,10,40,.55);
+  backdrop-filter:blur(2px);
+  pointer-events:none;
+  color:#ffffff;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  z-index:3;
+  white-space:nowrap;
+  transition:opacity .35s ease;
+  animation:hintPulse 1.8s ease-in-out infinite;
+}
+.scratch-hint .hint-icon{
+  font-size:15px;
+  transform:rotate(-15deg);
+}
+@keyframes hintPulse{
+  0%,100%{ opacity:.7; }
+  50%{ opacity:1; }
+}
+
+/* Sparkle particles container, positioned over the card */
+.sparkle-layer{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  z-index:4;
+  overflow:visible;
+}
+.sparkle{
+  position:absolute;
+  border-radius:50%;
+  background:radial-gradient(circle, #fff 0%, var(--gold) 55%, transparent 75%);
+  pointer-events:none;
+}
+
+/* ============================================================
+RESET BUTTON
+============================================================ */
+.btn-reset{
+  appearance:none;
+  border:none;
+  outline:none;
+  cursor:pointer;
+  padding:14px 34px;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:#241040;
+  background:linear-gradient(100deg, var(--gold) 0%, var(--gold-soft) 50%, var(--gold) 100%);
+  border-radius:999px;
+  box-shadow:0 12px 30px -8px rgba(245,196,81,.55), inset 0 1px 0 rgba(255,255,255,.6);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.btn-reset:hover{
+  transform:translateY(-2px);
+  box-shadow:0 16px 36px -8px rgba(245,196,81,.7), inset 0 1px 0 rgba(255,255,255,.6);
+}
+.btn-reset:active{
+  transform:translateY(0px) scale(.97);
+}
+
+.footer-note{
+  font-size:11px;
+  color:var(--text-dim);
+  opacity:.6;
+  text-align:center;
+}
+
+/* ============================================================
+CONFETTI PARTICLES (position:fixed, above everything)
+============================================================ */
+.confetti-piece{
+  position:fixed;
+  top:0;
+  left:0;
+  will-change:transform, opacity;
+  pointer-events:none;
+  z-index:9999;
+}
+
+/* ============================================================
+RESPONSIVE
+============================================================ */
+@media (max-width:420px){
+  :root{ --card-w:280px; --card-h:130px; }
+  .panel{ padding:22px; }
+  .headline{ font-size:24px; }
+}
