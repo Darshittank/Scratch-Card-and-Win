@@ -4,7 +4,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/Darshittank/Pop-It)](https://github.com/Darshittank/Scratch-Card-and-Win/network)
 [![GitHub issues](https://img.shields.io/github/issues/Darshittank/Pop-It)](https://github.com/Darshittank/Scratch-Card-and-Win/issues)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Live View](https://img.shields.io/badge/Play-Now-brightgreen)](https://darshittank.github.io/Scratch-Card-and-Win)
+[![Live View](https://img.shields.io/badge/Live-View-brightgreen)](https://darshittank.github.io/Scratch-Card-and-Win)
 
 ## 🎯 **Live Demo**
 👉 **[Live Demo!](https://darshittank.github.io/Scratch-Card-and-Win)** 👈
