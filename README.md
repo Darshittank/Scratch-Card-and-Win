@@ -34,16 +34,16 @@ A modern Scratch & Win web application built using HTML5 Canvas, CSS, JavaScript
 
 ## ⚙️ **Customization**
 
-1. You can easily customize:
-2. Coupon code format
-3. Scratch reveal percentage
-4. Confetti colors and particle count
-5. Background gradients
-6. Card dimensions
-7. Glow animation
-8. Sparkle effects
-9. Celebration sound
-10. Fonts and styling
+You can easily customize: 
+&#8639; Coupon code format 
+&#8639; Scratch reveal percentage
+&#8639; Confetti colors and particle count
+&#8639; Background gradients
+&#8639; Card dimensions
+&#8639; Glow animation
+&#8639; Sparkle effects
+&#8639; Celebration sound
+&#8639; Fonts and styling
 
 ## 📱 Browser Support
 ✅ Google Chrome
