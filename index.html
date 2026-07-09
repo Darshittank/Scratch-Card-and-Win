@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Scratch & Win — Premium Reward</title>
+
+<!-- jQuery via CDN -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+
+<!-- ============================================================
+     FLOATING BACKGROUND ORBS
+     ============================================================ -->
+<div class="bg-orb o1"></div>
+<div class="bg-orb o2"></div>
+<div class="bg-orb o3"></div>
+<div class="bg-orb o4"></div>
+
+<!-- ============================================================
+     MAIN STAGE
+     ============================================================ -->
+<div class="stage">
+
+  <div class="brand-eyebrow">Exclusive Reward Zone</div>
+  <h1 class="headline">Scratch the card &amp; <br/><span>Win Instantly</span></h1>
+  <p class="subtext">Use your finger or mouse to scratch the silver panel below and reveal your surprise code.</p>
+
+  <div class="panel">
+
+    <!-- Scratch card wrapper -->
+    <div id="cardWrap">
+      <div id="prizeLayer">
+        <div class="prize-label">Your Reward Code</div>
+        <div id="prizeCode">SAVE25X9</div>
+        <div class="prize-sub">Valid on your next order</div>
+      </div>
+
+      <canvas id="scratchCanvas"></canvas>
+      <div class="scratch-border"></div>
+      <div class="scratch-hint" id="scratchHint"><span class="hint-icon">🪙</span><span>Scratch Here</span></div>
+
+      <div class="sparkle-layer" id="sparkleLayer"></div>
+    </div>
+
+    <button class="btn-reset" id="resetBtn">Generate New Code</button>
+    <div class="footer-note">Scratch at least 65% of the surface to reveal your code</div>
+
+  </div>
+
+</div>
+</body>
+</html>
